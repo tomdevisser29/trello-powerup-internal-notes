@@ -41,8 +41,8 @@ function renderPrivateNoteSection() {
       t.closePopup();
     });
   });
-}
 
-t.render(function () {
-  t.sizeTo("#content").done();
-});
+  t.render(function () {
+    t.sizeTo("#content").done();
+  });
+}
