@@ -6,7 +6,7 @@ TrelloPowerUp.initialize({
       content: {
         type: "iframe",
         url: t.signUrl("./internal-notes.html"),
-        height: 0,
+        height: 50,
       },
     };
   },
