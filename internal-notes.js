@@ -5,6 +5,7 @@ t.render(function () {
   t.board("organization")
     .then(function (board) {
       var organizationId = board.organization.id;
+      console.log("organizationId", organizationId);
       return t.organization(organizationId).get("members");
     })
     .then(function (members) {
@@ -12,6 +13,7 @@ t.render(function () {
       var isMemberOfOrganization = members.some(
         (member) => member.id === currentUserId
       );
+      console.log("isMember", isMemberOfOrganization);
       if (!isMemberOfOrganization) {
         // If the user is not a member of the organization, render the Private Note section
         renderPrivateNoteSection();
@@ -26,6 +28,8 @@ function renderPrivateNoteSection() {
         <textarea id="noteInput" placeholder="Start typing..."></textarea>
         <button id="saveNoteBtn" class="mod-primary">Save Note</button>
     `;
+
+  console.log("rendering");
 
   // Load the saved note and prefill the textarea if available
   t.card("shared")
