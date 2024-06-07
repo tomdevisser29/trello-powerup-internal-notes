@@ -4,6 +4,12 @@ t.render(function () {
   if (t.memberCanWriteToModel("organization")) {
     renderPrivateNoteSection();
     t.sizeTo("#content").done();
+  } else {
+    // Render the Private Note section
+    var section = document.getElementById("content");
+    section.innerHTML = `
+        <p>These notes are only visible to Workspace Members.</p>
+    `;
   }
 });
 
