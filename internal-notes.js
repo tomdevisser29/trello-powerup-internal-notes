@@ -13,14 +13,9 @@ function renderPrivateNoteSection() {
     `;
 
   // Load the saved note and prefill the textarea if available
-  t.card("shared")
-    .get("privateNote")
-    .then(function (privateNote) {
-      document.getElementById("noteInput").value = privateNote || "";
-    })
-    .catch(function (error) {
-      console.error("Error occurred:", error);
-    });
+  t.get("card", "shared", "privateNote").then(function (privateNote) {
+    document.getElementById("noteInput").value = privateNote || "";
+  });
 
   document.getElementById("saveNoteBtn").addEventListener("click", function () {
     var note = document.getElementById("noteInput").value;
