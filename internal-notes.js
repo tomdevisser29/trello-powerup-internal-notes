@@ -12,21 +12,20 @@ function renderPrivateNoteSection() {
         <button id="saveNoteBtn" class="mod-primary">Save Note</button>
     `;
 
-  console.log("rendering");
-
   // Load the saved note and prefill the textarea if available
   t.card("shared")
     .get("shared", "privateNote")
     .then(function (privateNote) {
       document.getElementById("noteInput").value = privateNote || "";
+    })
+    .catch(function (error) {
+      console.error("Error occurred:", error);
     });
 
   document.getElementById("saveNoteBtn").addEventListener("click", function () {
     var note = document.getElementById("noteInput").value;
     // Save the note to the card's shared data
-    t.set("card", "shared", "privateNote", note).then(function () {
-      t.closePopup();
-    });
+    t.set("card", "shared", "privateNote", note);
   });
 
   t.render(function () {
