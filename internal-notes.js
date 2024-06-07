@@ -1,10 +1,13 @@
 var t = TrelloPowerUp.iframe();
 
 t.render(function () {
-  t.memberCanWriteToModel("organization").then(() => {
-    renderPrivateNoteSection();
-    t.sizeTo("#content").done();
-  });
+  console.log(t.memberCanWriteToModel("organization"));
+  t.memberCanWriteToModel("organization")
+    .then(() => {
+      renderPrivateNoteSection();
+      t.sizeTo("#content").done();
+    })
+    .catch((error) => console.error(error));
 });
 
 function renderPrivateNoteSection() {
