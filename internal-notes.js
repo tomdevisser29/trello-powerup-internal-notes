@@ -2,23 +2,23 @@ var t = TrelloPowerUp.iframe();
 
 t.render(function () {
   // Check if the user is a member of the organization
-  t.board("organization")
-    .then(function (board) {
-      var organizationId = board.organization.id;
-      console.log("organizationId", organizationId);
-      return t.organization(organizationId).get("members");
-    })
-    .then(function (members) {
-      var currentUserId = t.getContext().member;
-      var isMemberOfOrganization = members.some(
-        (member) => member.id === currentUserId
-      );
-      console.log("isMember", isMemberOfOrganization);
-      if (!isMemberOfOrganization) {
-        // If the user is not a member of the organization, render the Private Note section
-        renderPrivateNoteSection();
-      }
-    });
+  t.board("organization").then(function (board) {
+    console.log(board);
+    //   var organizationId = board.organization.id;
+    //   console.log("organizationId", organizationId);
+    //   return t.organization(organizationId).get("members");
+  });
+  // .then(function (members) {
+  //   var currentUserId = t.getContext().member;
+  //   var isMemberOfOrganization = members.some(
+  //     (member) => member.id === currentUserId
+  //   );
+  //   console.log("isMember", isMemberOfOrganization);
+  //   if (!isMemberOfOrganization) {
+  //     // If the user is not a member of the organization, render the Private Note section
+  //     renderPrivateNoteSection();
+  //   }
+  // });
 });
 
 function renderPrivateNoteSection() {
