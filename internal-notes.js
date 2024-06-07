@@ -1,7 +1,10 @@
 var t = TrelloPowerUp.iframe();
 
 t.render(function () {
-  renderPrivateNoteSection();
+  t.memberCanWriteToModel("organization").then(() => {
+    renderPrivateNoteSection();
+    t.sizeTo("#content").done();
+  });
 });
 
 function renderPrivateNoteSection() {
@@ -21,9 +24,5 @@ function renderPrivateNoteSection() {
     var note = document.getElementById("noteInput").value;
     // Save the note to the card's shared data
     t.set("card", "shared", "privateNote", note);
-  });
-
-  t.render(function () {
-    t.sizeTo("#content").done();
   });
 }
