@@ -14,7 +14,7 @@ function renderPrivateNoteSection() {
 
   // Load the saved note and prefill the textarea if available
   t.card("shared")
-    .get("shared", "privateNote")
+    .get("privateNote")
     .then(function (privateNote) {
       document.getElementById("noteInput").value = privateNote || "";
     })
